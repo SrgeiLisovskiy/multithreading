@@ -34,10 +34,12 @@ public class Main {
                 }
                 System.out.println(text.substring(0, 100) + " -> " + maxSize);
             };
-            threads.add(new Thread(logic));
+            Thread thread = new Thread(logic);
+            threads.add(thread);
+            thread.start();
+
         }
         for (Thread thread : threads) {
-            thread.start();
             thread.join();
         }
         long endTs = System.currentTimeMillis(); // end time
